@@ -1,6 +1,6 @@
 const Type = {
-  INCREASE: "UP",
-  DECREASE: "DOWN",
+  OPEN: true,
+  CLOSE: false,
 };
 
 export default Type;
