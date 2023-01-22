@@ -3,7 +3,7 @@ import { increaseCount, decreaseCount } from "../actions/action";
 import Button from "react-bootstrap/Button";
 import "../assets/css/Home.css";
 
-const Home = () => {
+const Test = () => {
   const reducer = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
@@ -20,4 +20,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Test;
