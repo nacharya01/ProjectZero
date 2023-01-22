@@ -6,9 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 function Home() {
     return(
-        <Router>
-            <Navbar />
-        </Router>
+        <Navbar />
     );
 }
 
