@@ -1,16 +1,7 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-
+import React from "react";
 
 function Home() {
-    return(
-        <Router>
-            <Navbar />
-        </Router>
-    );
+  return <div>....</div>;
 }
-
 
 export default Home;
