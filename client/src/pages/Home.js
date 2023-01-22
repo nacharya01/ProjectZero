@@ -9,7 +9,6 @@ function Home() {
         <Router>
             <Navbar />
         </Router>
-        
     );
 }
 
