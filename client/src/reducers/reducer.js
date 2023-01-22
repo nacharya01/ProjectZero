@@ -1,28 +1,26 @@
-//This is the just the sample
-
 import Type from "../actions/type";
 
-const firstState = {
-  count: 0,
+const login = {
+  open: false,
 };
 
-const Reducer = (state = firstState, action) => {
+const LoginReducer = (state = login, action) => {
   switch (action.type) {
-    case Type.INCREASE:
+    case Type.OPEN:
       return {
         ...state,
-        count: state.count + 1,
+        open: true,
       };
 
-    case Type.DECREASE:
+    case Type.CLOSE:
       return {
         ...state,
-        count: state.count - 1,
+        open: false,
       };
     default:
       return state;
   }
 };
 
-export default Reducer;
+export default LoginReducer;
 //End

@@ -1,18 +1,18 @@
 import Type from "./type";
 
-//This will return the action for increasing the count
-const increaseCount = () => {
+//This will return the action opening dialog
+const openLoginDialog = () => {
   return {
-    type: Type.INCREASE,
+    type: Type.OPEN,
   };
 };
 
-//This will return the action for decreasing the count
-const decreaseCount = () => {
+//This will return the action for closing dialog
+const closeLoginDialog = () => {
   return {
-    type: Type.DECREASE,
+    type: Type.CLOSE,
   };
 };
 
-export { increaseCount, decreaseCount };
+export { openLoginDialog, closeLoginDialog };
 //End

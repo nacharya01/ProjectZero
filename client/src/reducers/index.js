@@ -1,8 +1,8 @@
-import Reducer from "./reducer";
+import LoginReducer from "./reducer";
 import { combineReducers } from "redux";
 
 const combReducers = combineReducers({
-  reducer: Reducer,
+  loginReducer: LoginReducer,
   //you can add other reducers to change the state
 });
 
