@@ -103,6 +103,13 @@ const rooms = [
       "https://cdn.apartmenttherapy.info/image/upload/v1558619894/at/archive/09950b09a5ca0a8419979a9ec545239f7aeae475.jpg",
     price: "$199/night",
   },
+  {
+    id: 16,
+    name: "Room 16",
+    image:
+      "https://www.jonesaroundtheworld.com/wp-content/uploads/2020/11/Luxury-Airbnb-Downtown-Raleigh-NC.jpg",
+    price: "$249/night",
+  },
 ];
 
 export default rooms;

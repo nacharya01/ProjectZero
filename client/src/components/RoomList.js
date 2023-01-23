@@ -50,24 +50,7 @@ function RoomCard(props) {
 
 function RoomList() {
   return (
-    <Container maxWidth="xl" sx={{ marginTop: "10vh" }}>
-      <Typography
-        variant="h5"
-        noWrap
-        component="a"
-        href="/"
-        sx={{
-          flexGrow: 1,
-          mr: 2,
-          fontFamily: "monospace",
-          fontWeight: 700,
-          fontStyle: "bold",
-          color: "inherit",
-          textDecoration: "none",
-        }}
-      >
-        Nearby
-      </Typography>
+    <Container maxWidth="xl">
       <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
         {rooms.map((room) => (
           <RoomCard item xs={6} md={8} key={room.name} room={room} />
