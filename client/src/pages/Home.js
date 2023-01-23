@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import Jumbotron from "../components/Jumbotron";
 import RoomList from "../components/RoomList";
+import TabBar from "../components/TabBar";
 
 function Home() {
 
@@ -14,6 +15,7 @@ function Home() {
       <div>
         {openLogin.open && <Login />}
         <Jumbotron />
+        <TabBar />
         <RoomList />
       </div>
     </>
