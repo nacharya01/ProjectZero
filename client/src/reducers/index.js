@@ -1,9 +1,9 @@
-import LoginReducer from "./reducer";
+import { LoginReducer, SignUpReducer } from "./DialogReducer";
 import { combineReducers } from "redux";
 
 const combReducers = combineReducers({
   loginReducer: LoginReducer,
-  //you can add other reducers to change the state
+  signUpReducer: SignUpReducer,
 });
 
 //Exporting all combined reducers

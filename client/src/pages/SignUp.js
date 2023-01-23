@@ -10,15 +10,15 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { useDispatch, useSelector } from "react-redux";
-import { closeLoginDialog } from "../actions/DialogAction";
+import { closeSignUpDialog } from "../actions/DialogAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: theme.spacing(3, 2),
-    margin: theme.spacing(0.3, 0),
+    padding: theme.spacing(2),
+    margin: theme.spacing(0.2),
     width: "90%",
   },
   form: {
@@ -35,11 +35,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Login() {
+export default function SignUp() {
   const classes = useStyles();
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [phone, setPhone] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const openState = useSelector((state) => state.loginReducer);
+  const openState = useSelector((state) => state.signUpReducer);
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -47,7 +51,7 @@ export default function Login() {
   };
 
   const handleClose = () => {
-    dispatch(closeLoginDialog());
+    dispatch(closeSignUpDialog());
   };
 
   return (
@@ -58,7 +62,7 @@ export default function Login() {
       onClose={handleClose}
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>{"Login"}</DialogTitle>
+      <DialogTitle>{"Sign Up"}</DialogTitle>
       <DialogContent>
         <Paper className={classes.root}>
           <form className={classes.form} noValidate>
@@ -67,13 +71,60 @@ export default function Login() {
               margin="normal"
               required
               fullWidth
-              id="phoneNumber"
-              label="Phone number"
-              name="phoneNumber"
-              autoComplete="phone"
+              id="firstName"
+              label="First Name"
+              name="firstName"
+              autoFocus
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="lastName"
+              label="Last Name"
+              name="lastName"
+              autoFocus
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
               autoFocus
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="phone"
+              label="Phone Number"
+              name="phone"
+              autoFocus
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="address"
+              label="Full Address"
+              name="address"
+              autoFocus
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
             />
             <TextField
               variant="outlined"
@@ -97,7 +148,7 @@ export default function Login() {
               className={classes.submit}
               onClick={handleSubmit}
             >
-              Sign In
+              Sign Up
             </Button>
             <Button
               variant="outlined"
@@ -112,7 +163,7 @@ export default function Login() {
                   marginRight: 1,
                 }}
               />
-              Continue with Google
+              Sign up with Google
             </Button>
             <Button
               variant="outlined"
@@ -127,7 +178,7 @@ export default function Login() {
                   marginRight: 1,
                 }}
               />
-              Continue with Email
+              Sign up with Email
             </Button>
           </form>
         </Paper>
