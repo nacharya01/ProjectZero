@@ -11,7 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import TripOriginIcon from "@mui/icons-material/TripOrigin";
 import { useDispatch } from "react-redux";
-import { openLoginDialog } from "../actions/action";
+import { openLoginDialog,openSignUpDialog } from "../actions/DialogAction";
 
 const settings = ["Sign Up", "Login"];
 
@@ -26,6 +26,7 @@ function Navbar() {
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
     if (setting === "Login") dispatch(openLoginDialog());
+    if (setting === "Sign Up") dispatch(openSignUpDialog());
   };
 
   return (
