@@ -16,8 +16,8 @@ function RoomCard(props) {
     <div>
       <Card
         key={room.id}
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        // rowSpacing={1}
+        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ width: "40vh", marginTop: "5vh", marginInline: "2vh" }}
       >
         <CardActionArea>

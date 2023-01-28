@@ -1,17 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import RoomList from "./components/RoomList";
 
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+              <Route exact path="/" element={<Home />}>
+                <Route path="/home" element={<Home />} />
+                <Route path="RoomList" element={<RoomList />} />
+              </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
