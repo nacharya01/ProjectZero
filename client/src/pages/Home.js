@@ -19,7 +19,6 @@ function Home() {
         {openSignUp.open && <SignUp />}
         <Jumbotron />
         <TabBar />
-        <RoomList />
       </div>
     </>
   );
