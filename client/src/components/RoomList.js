@@ -1,4 +1,5 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
@@ -8,6 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import FilterButton from "./FilterButton.js";
 import rooms from "../assets/data/rooms.js";
 
 function RoomCard(props) {
@@ -51,6 +53,9 @@ function RoomCard(props) {
 function RoomList() {
   return (
     <Container maxWidth="xl">
+      <Box >
+        <FilterButton />
+      </Box>
       <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
         {rooms.map((room) => (
           <RoomCard item xs={6} md={8} key={room.name} room={room} />
