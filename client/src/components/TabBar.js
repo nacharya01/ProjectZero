@@ -11,6 +11,7 @@ import { faLocationPin, faFire, faHotel, faPlane, faCableCar, faParachuteBox, fa
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    borderRadius: '25px',
     flexGrow: 1,
     marginTop: '4vh',
   },
