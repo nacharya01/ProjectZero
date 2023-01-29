@@ -37,7 +37,7 @@ function TabBar() {
             indicatorColor="primary"
             color="black"
             >
-              <Tab icon={<FontAwesomeIcon icon={faLocationPin} size="2x"/>} label="Nearby" component={Link} to="/" />
+              <Tab icon={<FontAwesomeIcon icon={faLocationPin} size="2x"/>} label="Nearby" component={Link} to="Maps" />
               <Tab icon={<FontAwesomeIcon icon={faFire} size="2x"/>} label="Trending" component={Link} to="RoomList" />
               <Tab icon={<FontAwesomeIcon icon={faHotel} size="2x"/>} label="Hotels" component={Link} to="/" />
               <Tab icon={<FontAwesomeIcon icon={faPlane} size="2x"/>} label="Flights" component={Link} to="/" />
