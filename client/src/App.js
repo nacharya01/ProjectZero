@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import RoomList from "./components/RoomList";
+import Maps from "./pages/Maps";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route exact path="/" element={<Home />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="RoomList" element={<RoomList />} />
+                <Route path="Maps" element={<Maps />} />
               </Route>
         </Routes>
         <Footer />
