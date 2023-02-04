@@ -11,9 +11,12 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import FilterButton from "./FilterButton.js";
 import rooms from "../assets/data/rooms.js";
+import { useNavigate } from "react-router-dom";
 
 function RoomCard(props) {
+  const router = useNavigate();
   const { room } = props;
+
   return (
     <div>
       <Card
@@ -38,7 +41,13 @@ function RoomCard(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              router("/RoomDetails");
+            }}
+          >
             View
           </Button>
           <Button size="small" color="primary">
@@ -53,7 +62,7 @@ function RoomCard(props) {
 function RoomList() {
   return (
     <Container maxWidth="xl">
-      <Box >
+      <Box>
         <FilterButton />
       </Box>
       <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
@@ -66,4 +75,3 @@ function RoomList() {
 }
 
 export default RoomList;
-

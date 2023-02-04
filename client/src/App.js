@@ -1,10 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import RoomList from "./components/RoomList";
 import Maps from "./pages/Maps";
+import RoomDetails from "./pages/RoomDetails";
 
 function App() {
   return (
@@ -12,11 +13,11 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-              <Route exact path="/" element={<Home />}>
-                <Route path="/home" element={<Home />} />
-                <Route path="RoomList" element={<RoomList />} />
-                <Route path="Maps" element={<Maps />} />
-              </Route>
+          <Route exact path="/" element={<Home />}>
+            <Route path="RoomList" element={<RoomList />} />
+            <Route path="RoomDetails" element={<RoomDetails />} />
+            <Route path="Maps" element={<Maps />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
