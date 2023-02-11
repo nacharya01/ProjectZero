@@ -14,15 +14,13 @@ import rooms from "../assets/data/rooms.js";
 import { useNavigate } from "react-router-dom";
 
 function RoomCard(props) {
-  const router = useNavigate();
+  const navigate = useNavigate();
   const { room } = props;
 
   return (
     <div>
       <Card
         key={room.id}
-        // rowSpacing={1}
-        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ width: "40vh", marginTop: "5vh", marginInline: "2vh" }}
       >
         <CardActionArea>
@@ -45,7 +43,7 @@ function RoomCard(props) {
             size="small"
             color="primary"
             onClick={() => {
-              router("/RoomDetails");
+              navigate("/RoomDetails");
             }}
           >
             View
