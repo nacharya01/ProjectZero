@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import WifiIcon from "@material-ui/icons/Wifi";
+import SmokingRoomsIcon from "@material-ui/icons/SmokingRooms";
+import LocalParkingIcon from "@material-ui/icons/LocalParking";
+import HotelIcon from "@material-ui/icons/Hotel";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import PersonIcon from "@material-ui/icons/Person";
+import RoomIcon from "@material-ui/icons/Room";
+import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: "50%",
-    minWidth: "48%",
-    margin: 20,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: "20px",
+  },
+  photobook: {
+    borderBottom: "1px solid lightgrey",
   },
   media: {
     height: "55vh",
   },
-});
+  list: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 const photos = [
   {
@@ -35,6 +51,58 @@ const photos = [
   },
 ];
 
+function Amenities() {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <Grid container spacing={2}>
+        <Grid item xs={6} sm={3}>
+          <List className={classes.list}>
+            <ListItem>
+              <ListItemText primary="Room Number" secondary="101" />
+              <ConfirmationNumberIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Room Type" secondary="Standard" />
+              <RoomIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Max Occupancy" secondary="2" />
+              <PersonIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Room Rate" secondary="$100" />
+              <AttachMoneyIcon />
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <List className={classes.list}>
+            <ListItem>
+              <ListItemText primary="Bed Type" secondary="King" />
+              <HotelIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Smoking" secondary="Non-Smoking" />
+              <SmokingRoomsIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Wi-Fi" secondary="Free" />
+              <WifiIcon />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Parking" secondary="Free" />
+              <LocalParkingIcon />
+            </ListItem>
+          </List>
+        </Grid>
+      </Grid>
+    </div>
+  );
+}
+
+
 export default function PhotosCard() {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,14 +114,11 @@ export default function PhotosCard() {
     }, 3000);
     setIntervalId(id);
     return () => clearInterval(intervalId);
-  }, [currentIndex]);
+  }, [currentIndex, intervalId]);
 
   return (
-    <Card className={classes.card}>
-      <Typography variant="h5" component="h5">
-        Photos
-      </Typography>
-      <CardActionArea>
+    <div className={classes.root}>
+      <div className={classes.photobook}>
         <CardMedia
           className={classes.media}
           image={photos[currentIndex].url}
@@ -61,10 +126,12 @@ export default function PhotosCard() {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {photos[currentIndex].description}
+            Room1
           </Typography>
         </CardContent>
-      </CardActionArea>
-    </Card>
+      </div>
+      <Amenities />
+
+    </div>
   );
 }

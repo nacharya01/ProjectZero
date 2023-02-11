@@ -15,9 +15,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />}>
             <Route path="RoomList" element={<RoomList />} />
-            <Route path="RoomDetails" element={<RoomDetails />} />
             <Route path="Maps" element={<Maps />} />
           </Route>
+          <Route path="RoomDetails" element={<RoomDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
