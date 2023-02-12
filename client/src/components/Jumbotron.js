@@ -18,7 +18,7 @@ function Jumbotron() {
     <Paper
       elevation={6}
       sx={{
-        padding: 2,
+        padding: '10px',
         textAlign: "center",
         backgroundImage:
           "url(https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&w=1000&q=80)",
@@ -26,6 +26,9 @@ function Jumbotron() {
         backgroundPosition: "center",
         color: "black",
         height: "50vh",
+        // marginLeft: '20px',
+        // marginRight: '20px',
+        boxShadow: 'none'
       }}
     >
       <h1>Welcome to ZERO!</h1>

@@ -1,11 +1,10 @@
 import * as React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -13,45 +12,51 @@ import FilterButton from "./FilterButton.js";
 import rooms from "../assets/data/rooms.js";
 import { useNavigate } from "react-router-dom";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    marginTop: "2em",
+    marginInline: "1em",
+    boxShadow: "0",
+  },
+  image: {
+    height: "20em",
+  },
+}));
+
 function RoomCard(props) {
+  const classes = useStyles();
   const navigate = useNavigate();
   const { room } = props;
 
   return (
-    <div>
-      <Card
-        key={room.id}
-        sx={{ width: "40vh", marginTop: "5vh", marginInline: "2vh" }}
+    <div >
+      <Card className={classes.root}>
+      <CardActionArea
+        onClick={() => {
+          navigate("/RoomDetails");
+        }}
       >
-        <CardActionArea>
-          <CardMedia
-            sx={{ height: "35vh" }}
-            image={room.image}
-            title={room.name}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {room.name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {room.price}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => {
-              navigate("/RoomDetails");
-            }}
-          >
-            View
-          </Button>
-          <Button size="small" color="primary">
-            Book
-          </Button>
-        </CardActions>
+        <CardMedia
+          className={classes.image}
+          image={room.image}
+          title={room.name}
+        />
+        <CardContent>
+          <Typography variant="h6" component="p">
+            {room.name}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {room.location}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            2.0 miles away
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {room.price}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       </Card>
     </div>
   );
@@ -63,9 +68,11 @@ function RoomList() {
       <Box>
         <FilterButton />
       </Box>
-      <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
+      <Grid container spacing={2} >
         {rooms.map((room) => (
-          <RoomCard item xs={6} md={8} key={room.name} room={room} />
+          <Grid item xs={6} sm={6} md={3} lg={2} key={room.name}>
+            <RoomCard room={room} />
+          </Grid>
         ))}
       </Grid>
     </Container>
