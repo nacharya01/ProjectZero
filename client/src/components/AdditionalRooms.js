@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     width: "250px",
     marginRight: "20px",
   },
+  content: {
+    alignItems: 'start'
+  }
 });
 
 export default function RoomList(props) {
@@ -33,9 +36,11 @@ export default function RoomList(props) {
       {rooms.map((room, index) => (
         <ListItem className={classes.item} key={index}>
           <img src={room.image} className={classes.image} alt="" />
-          <ListItemText>
-            <Typography variant="h6">{room.name}</Typography>
-            <Typography variant="body2">{room.price}</Typography>
+          <ListItemText className={classes.content}>
+            <Typography variant="h6" component="p">{room.name}</Typography>
+            <Typography variant="body2" component="p">{room.location}</Typography >
+            <Typography variant="body2" color="textSecondary" component="p">4.3 miles away</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">{room.price}</Typography>
           </ListItemText>
         </ListItem>
       ))}

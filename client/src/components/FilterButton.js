@@ -13,12 +13,18 @@ import { faSliders } from "@fortawesome/free-solid-svg-icons";
 const useStyles = makeStyles((theme) => ({
   filterButton: {
     marginTop: '1rem',
-    marginLeft: '1rem'
+    marginLeft: '1rem',
+    border: '1px solid black',
+    borderRadius: '25px'
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  filerIcon: {
+    fontSize: '1.8em',
+    color: '#454545'
+  }
 }));
 
 export default function FilterButton() {
@@ -56,7 +62,7 @@ export default function FilterButton() {
         className={classes.filterButton}
         onClick={handleClickOpen}
       >
-        <FontAwesomeIcon color="black" icon={faSliders} size="2x" />
+        <FontAwesomeIcon color="black" icon={faSliders} className={classes.filerIcon} />
       </Button>
 
       <Dialog
