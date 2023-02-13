@@ -4,8 +4,6 @@ import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-// import Carousel from '@material-ui/core/Carousel';
-import { images } from "../constants";
 
 function Jumbotron() {
   const [search, setSearch] = React.useState("");
