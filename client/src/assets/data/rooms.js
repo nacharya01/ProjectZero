@@ -60,7 +60,7 @@ const rooms = [
     name: "Room 8",
     location: 'Pokhara, Nepal',
     image:
-      "https://www.brickunderground.com/sites/default/files/styles/blog_primary_image/public/blog/images/Screen%20Shot%202020-03-26%20at%202.57.55%20PM.png",
+    "https://www.travelperk.com/wp-content/uploads/airbnb-scaled.jpg",
     price: "$120/night",
   },
   {

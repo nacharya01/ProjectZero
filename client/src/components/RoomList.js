@@ -70,7 +70,7 @@ function RoomList() {
       </Box>
       <Grid container spacing={2} >
         {rooms.map((room) => (
-          <Grid item xs={6} sm={6} md={3} lg={2} key={room.name}>
+          <Grid item xs={6} sm={6} md={4} lg={3} key={room.name}>
             <RoomCard room={room} />
           </Grid>
         ))}
