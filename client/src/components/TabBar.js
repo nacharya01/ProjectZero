@@ -1,9 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Tabs, Tab } from "@material-ui/core";
+import { Tabs, Tab, Icon } from "@material-ui/core";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { Icon } from "@material-ui/core";
 import { Link, Outlet } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
