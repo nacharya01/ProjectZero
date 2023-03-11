@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
   ratings: {
     marginBottom: "20px",
   },
-  commentButton: {
-    marginTop: "10px",
-    marginLeft: "auto",
-  },
 }));
 
 export interface Comment {
@@ -86,7 +82,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ onAddComment }) => {
           className={classes.commentTextField}
         />
         <Button
-          className={classes.commentButton}
+          sx={{ marginTop: "1.5em", marginLeft: "auto" }}
           variant="contained"
           color="primary"
           onClick={handleAddComment}

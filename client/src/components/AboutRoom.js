@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Icon } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -7,17 +8,6 @@ import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faWifi,
-  faPaw,
-  faMountainSun,
-  faAirFreshener,
-  faTv,
-  faBath,
-  faParking,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
 import RoomReviews from "./RoomReviews.tsx";
 import reviews from "../assets/data/reviews";
 
@@ -61,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   amenityText: {
     fontSize: "1.5em",
     fontWeight: "bold",
+    marginLeft: "1em",
     color: "#454545",
   },
 }));
@@ -88,61 +79,43 @@ function Amenities() {
 
   return (
     <div className={classes.amenityContainer}>
-      <Typography variant="h6" color="textPrimary" component="p">
+      <Typography variant="h5" gutterBottom>
         What this place offers?
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <List className={classes.list}>
             <ListItem>
-              <FontAwesomeIcon
-                color="black"
-                icon={faMountainSun}
-                className={classes.amenityIcon}
-              />
+              <Icon className="material-symbols-outlined">imagesmode</Icon>
               <ListItemText
-                primary="Mountain View"
+                primary="Great outdoor view"
                 className={classes.amenityText}
               />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon
-                color="black"
-                icon={faWifi}
-                className={classes.amenityIcon}
-              />
-              <ListItemText primary="Wi-Fi" className={classes.amenityText} />
+              <Icon className="material-symbols-outlined">wifi</Icon>
+              <ListItemText primary="24/7 Wi-Fi" className={classes.amenityText} />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon
-                color="black"
-                icon={faTv}
-                className={classes.amenityIcon}
-              />
-              <ListItemText primary="TV" className={classes.amenityText} />
+              <Icon className="material-symbols-outlined">tv</Icon>
+              <ListItemText primary='65" HDTV with Netflix, Roku' className={classes.amenityText} />
             </ListItem>
           </List>
         </Grid>
         <Grid item xs={12} sm={4}>
           <List className={classes.list}>
             <ListItem>
-              <FontAwesomeIcon
-                icon={faAirFreshener}
-                className={classes.amenityIcon}
-              />
-              <ListItemText primary="AC/Heat" className={classes.amenityText} />
+              <Icon className="material-symbols-outlined">ac_unit</Icon>
+              <ListItemText primary="Central AC/Heat" className={classes.amenityText} />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon
-                icon={faParking}
-                className={classes.amenityIcon}
-              />
-              <ListItemText primary="Parking" className={classes.amenityText} />
+              <Icon className="material-symbols-outlined">directions_car</Icon>
+              <ListItemText primary="Free parking on premises" className={classes.amenityText} />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon icon={faPhone} className={classes.amenityIcon} />
+              <Icon className="material-symbols-outlined">local_laundry_service</Icon>
               <ListItemText
-                primary="Phone Service"
+                primary="In-House Laundry Service"
                 className={classes.amenityText}
               />
             </ListItem>
@@ -151,21 +124,21 @@ function Amenities() {
         <Grid item xs={12} sm={4}>
           <List className={classes.list}>
             <ListItem>
-              <FontAwesomeIcon icon={faBath} className={classes.amenityIcon} />
+              <Icon className="material-symbols-outlined">nest_cam_outdoor</Icon>
               <ListItemText
-                primary="Attached Bathroom"
+                primary="Security cameras om property"
                 className={classes.amenityText}
               />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon icon={faPaw} className={classes.amenityIcon} />
+              <Icon className="material-symbols-outlined">chair</Icon>
               <ListItemText
-                primary="Pets Allowed"
+                primary="Fine Furniture"
                 className={classes.amenityText}
               />
             </ListItem>
             <ListItem>
-              <FontAwesomeIcon icon={faPaw} className={classes.amenityIcon} />
+              <Icon className="material-symbols-outlined">pets</Icon>
               <ListItemText
                 primary="Pets Allowed"
                 className={classes.amenityText}
