@@ -1,6 +1,13 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 import { Rating } from "@mui/material";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: "20px",
+  },
+}));
 
 type RoomReviewProps = {
   reviews: {
@@ -14,8 +21,10 @@ type RoomReviewProps = {
 };
 
 const RoomReview: React.FC<RoomReviewProps> = ({ reviews }) => {
+  const classes = useStyles();
+
   return (
-    <>
+    <div className={classes.root}>
       <Typography variant="h5" gutterBottom>
         Reviews
       </Typography>
@@ -46,7 +55,7 @@ const RoomReview: React.FC<RoomReviewProps> = ({ reviews }) => {
           </CardContent>
         </Card>
       ))}
-    </>
+    </div>
   );
 };
 
