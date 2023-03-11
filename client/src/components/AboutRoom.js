@@ -18,6 +18,8 @@ import {
   faParking,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import RoomReviews from "./RoomReviews.tsx";
+import reviews from "../assets/data/reviews";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -216,6 +218,7 @@ export default function PhotosCard() {
         </CardContent>
       </div>
       <Amenities />
+      <RoomReviews reviews={reviews} />
     </div>
   );
 }
