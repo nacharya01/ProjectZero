@@ -7,16 +7,31 @@ import SearchIcon from "@mui/icons-material/Search";
 
 function Jumbotron() {
   const [search, setSearch] = React.useState("");
+  const [checkIn, setCheckIn] = React.useState("CheckIn");
+  const [checkOut, setCheckOut] = React.useState("");
+  const [numOfPeople, setNumOfPeople] = React.useState("");
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+  };
+
+  const handleCheckInChange = (e) => {
+    setCheckIn(e.target.value);
+  };
+
+  const handleCheckOutChange = (e) => {
+    setCheckOut(e.target.value);
+  };
+
+  const handleNumOfPeople = (e) => {
+    setNumOfPeople(e.target.value);
   };
 
   return (
     <Paper
       elevation={6}
       sx={{
-        padding: '10px',
+        padding: "10px",
         textAlign: "center",
         backgroundImage:
           "url(https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&w=1000&q=80)",
@@ -26,7 +41,7 @@ function Jumbotron() {
         height: "50vh",
         // marginLeft: '20px',
         // marginRight: '20px',
-        boxShadow: 'none'
+        boxShadow: "none",
       }}
     >
       <h1>Welcome to ZERO!</h1>
@@ -45,21 +60,85 @@ function Jumbotron() {
             display: "flex",
             alignItems: "center",
             width: "60%",
-            borderRadius: '100px'
+            border: "1px solid black",
+            borderRadius: "100px",
+            height: "3.5em",
           }}
         >
           <InputBase
             sx={{
               marginLeft: 2,
               flex: 1,
-              height: "6vh",
+              height: "3.5em",
+              borderRight: "1px solid grey",
+              lineHeight: "3em",
             }}
             placeholder="Search"
             value={search}
             onChange={handleSearch}
           />
-          <IconButton sx={{border: '1px solid', width: '10vh', borderRadius: '100px'}}>
-            <SearchIcon sx={{ color: "black", fontWeight: "500" }} />
+          <InputBase
+            id="check-in"
+            label="Check-out"
+            type="date"
+            value={checkIn}
+            onChange={handleCheckInChange}
+            sx={{
+              width: "12em",
+              height: "3.5em",
+              borderRight: "1px solid grey",
+              padding: "2px",
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <InputBase
+            id="check-out"
+            label="Check-out"
+            type="date"
+            value={checkOut}
+            onChange={handleCheckOutChange}
+            sx={{
+              width: "12em",
+              height: "3.5em",
+              borderRight: "1px solid grey",
+              padding: "2px",
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <InputBase
+            placeholder="Who"
+            value={numOfPeople}
+            onChange={handleNumOfPeople}
+            sx={{
+              width: "4em",
+              height: "3.5em",
+              borderRight: "1px solid grey",
+              padding: "2px",
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <IconButton
+            sx={{
+              width: "4em",
+              borderTopRightRadius: "3em",
+              borderBottomRightRadius: "3em",
+              height: "inherit",
+            }}
+          >
+            <SearchIcon
+              sx={{
+                fontSize: "40px",
+                color: "black",
+                fontWeight: "bold",
+                padding: "0em",
+              }}
+            />
           </IconButton>
         </Paper>
       </Box>
