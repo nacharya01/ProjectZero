@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 import { Rating } from "@mui/material";
+import CommentBox, { Comment } from './CommentBox.tsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,20 +15,27 @@ type RoomReviewProps = {
     profilePic?: string;
     firstName?: string;
     lastName?: string;
-    stars?: number;
+    rating?: number;
     comment?: string;
     timestamp?: string;
   }[];
 };
 
 const RoomReview: React.FC<RoomReviewProps> = ({ reviews }) => {
+
   const classes = useStyles();
+
+  const handleAddComment = (comment : Comment) => {
+    console.log(comment);
+    // Do something with the new comment, like sending it to a server
+  };
 
   return (
     <div className={classes.root}>
       <Typography variant="h5" gutterBottom>
         Reviews
       </Typography>
+      <CommentBox onAddComment={handleAddComment} />
       {reviews.map((review, index) => (
         <Card key={index} sx={{ mb: 2 }}>
           <CardHeader
@@ -47,7 +55,7 @@ const RoomReview: React.FC<RoomReviewProps> = ({ reviews }) => {
             </Typography>
             <Rating
               name="rating"
-              value={review.stars || 5}
+              value={review.rating || 5}
               precision={0.5}
               readOnly
               sx={{ mb: 1 }}
