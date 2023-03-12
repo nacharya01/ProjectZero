@@ -10,6 +10,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import RoomReviews from "./RoomReviews.tsx";
 import reviews from "../assets/data/reviews";
+import Button from "@material-ui/core/Button";
+import photos from "../assets/data/photos";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,25 +57,19 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
     color: "#454545",
   },
+  button: {
+    borderRadius: "10px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    fontWeight: "bold",
+    letterSpacing: "0.5px",
+    textTransform: "capitalize",
+    padding: "10px 20px",
+    boxShadow: "none",
+    marginLeft: "-1.5rem",
+  },
 }));
-
-const photos = [
-  {
-    url: "https://www.extraspace.com/blog/wp-content/uploads/2020/10/where-to-keep-stuff-airbnb-1000x675.jpg",
-    title: "Image 1",
-    description: "Bed Room",
-  },
-  {
-    url: "https://images.squarespace-cdn.com/content/v1/571670a9a3360c1a30ec94a3/755a588b-561d-48e6-a098-4334b233025d/Screen+Shot+2022-03-29+at+11.46.53+AM.png?format=1000w",
-    title: "Image 2",
-    description: "Bed Room",
-  },
-  {
-    url: "/img/room.jpeg",
-    title: "Image 3",
-    description: "Bed Room",
-  },
-];
 
 function Amenities() {
   const classes = useStyles();
@@ -94,11 +91,17 @@ function Amenities() {
             </ListItem>
             <ListItem>
               <Icon className="material-symbols-outlined">wifi</Icon>
-              <ListItemText primary="24/7 Wi-Fi" className={classes.amenityText} />
+              <ListItemText
+                primary="24/7 Wi-Fi"
+                className={classes.amenityText}
+              />
             </ListItem>
             <ListItem>
               <Icon className="material-symbols-outlined">tv</Icon>
-              <ListItemText primary='65" HDTV with Netflix, Roku' className={classes.amenityText} />
+              <ListItemText
+                primary='65" HDTV with Netflix, Roku'
+                className={classes.amenityText}
+              />
             </ListItem>
           </List>
         </Grid>
@@ -106,14 +109,22 @@ function Amenities() {
           <List className={classes.list}>
             <ListItem>
               <Icon className="material-symbols-outlined">ac_unit</Icon>
-              <ListItemText primary="Central AC/Heat" className={classes.amenityText} />
+              <ListItemText
+                primary="Central AC/Heat"
+                className={classes.amenityText}
+              />
             </ListItem>
             <ListItem>
               <Icon className="material-symbols-outlined">directions_car</Icon>
-              <ListItemText primary="Free parking on premises" className={classes.amenityText} />
+              <ListItemText
+                primary="Free parking on premises"
+                className={classes.amenityText}
+              />
             </ListItem>
             <ListItem>
-              <Icon className="material-symbols-outlined">local_laundry_service</Icon>
+              <Icon className="material-symbols-outlined">
+                local_laundry_service
+              </Icon>
               <ListItemText
                 primary="In-House Laundry Service"
                 className={classes.amenityText}
@@ -124,7 +135,9 @@ function Amenities() {
         <Grid item xs={12} sm={4}>
           <List className={classes.list}>
             <ListItem>
-              <Icon className="material-symbols-outlined">nest_cam_outdoor</Icon>
+              <Icon className="material-symbols-outlined">
+                nest_cam_outdoor
+              </Icon>
               <ListItemText
                 primary="Security cameras om property"
                 className={classes.amenityText}
@@ -153,6 +166,7 @@ function Amenities() {
 
 export default function PhotosCard() {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
 
@@ -161,7 +175,7 @@ export default function PhotosCard() {
       setCurrentIndex((currentIndex + 1) % photos.length);
     }, 3000);
     setIntervalId(id);
-    return () => clearInterval(intervalId);
+    setTimeout(() => clearInterval(intervalId), 3100);
   }, [currentIndex, intervalId]);
 
   return (
@@ -188,6 +202,17 @@ export default function PhotosCard() {
             kitchen with a large dining table and buffett. There is a bluetooth
             and record digital audio system near the kitchen bar area
           </Typography>
+          <div className={classes.button}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                navigate("/Checkout");
+              }}
+            >
+              Reserve Now
+            </Button>
+          </div>
         </CardContent>
       </div>
       <Amenities />
