@@ -1,15 +1,38 @@
 import React from "react";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
+import { Paper, Box, InputBase, IconButton, Divider } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
+import { Icon } from "@material-ui/core";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+
+const useStyles = makeStyles({
+  customDatePicker: {
+    "& .MuiInputBase-root": {
+      width: "12em",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      display: "none", // Hide the notched outline
+    },
+  },
+});
+
+const StyledIcon = styled(Icon)(({ theme }) => ({
+  color: "blue",
+}));
 
 function Jumbotron() {
+  const classes = useStyles();
+
   const [search, setSearch] = React.useState("");
-  const [checkIn, setCheckIn] = React.useState("CheckIn");
-  const [checkOut, setCheckOut] = React.useState("");
-  const [numOfPeople, setNumOfPeople] = React.useState("");
+  const [checkIn, setCheckIn] = React.useState(dayjs());
+  const [checkOut, setCheckOut] = React.useState(dayjs().add(1, "day"));
+  const [numOfGuests, setNumOfGuests] = React.useState("");
+
+  const today = dayjs();
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -23,8 +46,8 @@ function Jumbotron() {
     setCheckOut(e.target.value);
   };
 
-  const handleNumOfPeople = (e) => {
-    setNumOfPeople(e.target.value);
+  const handleNumOfGuests = (e) => {
+    setNumOfGuests(e.target.value);
   };
 
   return (
@@ -39,8 +62,6 @@ function Jumbotron() {
         backgroundPosition: "center",
         color: "black",
         height: "50vh",
-        // marginLeft: '20px',
-        // marginRight: '20px',
         boxShadow: "none",
       }}
     >
@@ -56,68 +77,62 @@ function Jumbotron() {
       >
         <Paper
           sx={{
-            padding: "2px 4px",
             display: "flex",
             alignItems: "center",
-            width: "60%",
-            border: "1px solid black",
+            width: "70%",
             borderRadius: "100px",
-            height: "3.5em",
+            height: "4em",
+            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
           }}
         >
           <InputBase
             sx={{
-              marginLeft: 2,
               flex: 1,
-              height: "3.5em",
-              borderRight: "1px solid grey",
-              lineHeight: "3em",
+              padding: "2em",
             }}
             placeholder="Search"
             value={search}
             onChange={handleSearch}
           />
+          <Divider orientation="vertical" flexItem />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              // label="Check-In"
+              format="MMM D"
+              inputFormat="MMM D"
+              openTo="day"
+              defaultValue={checkIn}
+              onChange={handleCheckInChange}
+              minDate={today}
+              className={classes.customDatePicker}
+              InputLabelProps={{ shrink: true }}
+            />
+            <StyledIcon
+              className="material-symbols-outlined"
+              sx={{ color: "gray" }}
+            >
+              arrow_right_alt
+            </StyledIcon>
+            <DatePicker
+              // label="Check-Out"
+              format="MMM D"
+              inputFormat="MMM D"
+              openTo="day"
+              defaultValue={checkOut}
+              onChange={handleCheckOutChange}
+              minDate={checkIn}
+              className={classes.customDatePicker}
+              InputLabelProps={{ shrink: true }}
+            />
+          </LocalizationProvider>
+          <Divider orientation="vertical" flexItem />
           <InputBase
-            id="check-in"
-            label="Check-out"
-            type="date"
-            value={checkIn}
-            onChange={handleCheckInChange}
+            placeholder="2 Guests"
+            value={numOfGuests}
+            onChange={handleNumOfGuests}
             sx={{
-              width: "12em",
-              height: "3.5em",
-              borderRight: "1px solid grey",
-              padding: "2px",
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <InputBase
-            id="check-out"
-            label="Check-out"
-            type="date"
-            value={checkOut}
-            onChange={handleCheckOutChange}
-            sx={{
-              width: "12em",
-              height: "3.5em",
-              borderRight: "1px solid grey",
-              padding: "2px",
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <InputBase
-            placeholder="Who"
-            value={numOfPeople}
-            onChange={handleNumOfPeople}
-            sx={{
-              width: "4em",
-              height: "3.5em",
-              borderRight: "1px solid grey",
-              padding: "2px",
+              padding: "1em",
+              width: "8em",
             }}
             InputLabelProps={{
               shrink: true,
@@ -125,18 +140,19 @@ function Jumbotron() {
           />
           <IconButton
             sx={{
-              width: "4em",
-              borderTopRightRadius: "3em",
-              borderBottomRightRadius: "3em",
+              width: "3em",
+              borderRadius: "0 3em 3em 0",
               height: "inherit",
             }}
           >
             <SearchIcon
               sx={{
                 fontSize: "40px",
-                color: "black",
+                borderRadius: "50%",
+                color: "white",
+                background: "black",
                 fontWeight: "bold",
-                padding: "0em",
+                padding: "8px",
               }}
             />
           </IconButton>
