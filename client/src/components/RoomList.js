@@ -11,6 +11,7 @@ import Container from "@mui/material/Container";
 import FilterButton from "./FilterButton.js";
 import rooms from "../assets/data/rooms.js";
 import { useNavigate } from "react-router-dom";
+import ToggleMenu from "./ToggleMenu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,33 +31,33 @@ function RoomCard(props) {
   const { room } = props;
 
   return (
-    <div >
+    <div>
       <Card className={classes.root}>
-      <CardActionArea
-        onClick={() => {
-          navigate("/RoomDetails");
-        }}
-      >
-        <CardMedia
-          className={classes.image}
-          image={room.image}
-          title={room.name}
-        />
-        <CardContent>
-          <Typography variant="h6" component="p">
-            {room.name}
-          </Typography>
-          <Typography variant="body2" component="p">
-            {room.location}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            2.0 miles away
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {room.price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            navigate("/RoomDetails");
+          }}
+        >
+          <CardMedia
+            className={classes.image}
+            image={room.image}
+            title={room.name}
+          />
+          <CardContent>
+            <Typography variant="h6" component="p">
+              {room.name}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {room.location}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              2.0 miles away
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {room.price}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
       </Card>
     </div>
   );
@@ -65,16 +66,22 @@ function RoomCard(props) {
 function RoomList() {
   return (
     <Container maxWidth="xl">
-      <Box>
+
+      <Box display="flex" alignItems="center">
         <FilterButton />
+        <Box flex="1" />
+        <ToggleMenu />
+        <Box flex="1" />
       </Box>
-      <Grid container spacing={2} >
+
+      <Grid container spacing={2}>
         {rooms.map((room) => (
           <Grid item xs={6} sm={6} md={4} lg={3} key={room.name}>
             <RoomCard room={room} />
           </Grid>
         ))}
       </Grid>
+      
     </Container>
   );
 }
