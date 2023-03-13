@@ -7,12 +7,13 @@ import {
   CardContent,
   Typography,
   Divider,
+  Box,
+  Icon,
 } from "@material-ui/core";
 import rooms from "../assets/data/rooms";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 570,
     marginTop: "1rem",
     marginBottom: theme.spacing(4),
     overflow: "hidden",
@@ -37,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   divider: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(3),
   },
   protection: {
     marginTop: theme.spacing(2),
@@ -97,36 +98,44 @@ const PriceDetails = (props: detailsProps) => {
       />
       <CardContent className={classes.content}>
         <div>
-          <Typography variant="h5" component="h2">
+          <Typography
+            variant="body2"
+            component="p"
+            style={{ fontWeight: "700", fontStyle: "bold" }}
+          >
             {details.title}
           </Typography>
           <div className={classes.reviews}>
-            <Typography variant="h6" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary">
+              {/* {details.imageTitle} */}
+            </Typography>
+            <Icon
+              style={{ fontSize: "0.8em" }}
+              className="material-symbols-outlined"
+            >
+              star
+            </Icon>
+            <Typography variant="subtitle2" color="textSecondary">
               {details.avgRev}
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
               ({details.totalReview} reviews)
             </Typography>
           </div>
-          <Typography variant="body1" color="textSecondary">
-            {details.imageTitle}
-          </Typography>
         </div>
       </CardContent>
-      <Divider className={classes.divider} />
+      {/* <Divider className={classes.divider} />
       <div className={classes.protection}>
         <Typography variant="body2" color="textSecondary">
           {details.protection}
-          <span style={{ color: "red", fontWeight: "bold" }}>Air </span>
-          <span style={{ fontWeight: "bold" }}>Cover</span>
         </Typography>
-      </div>
+      </div> */}
       <Divider className={classes.divider} />
       <CardContent>
         <CardHeader title="Price Details" className={classes.cardHeader} />
         <div className={classes.details}>
           <Typography variant="body1">
-            ${details.costPerNight}x{details.days} nights
+            ${details.costPerNight} x {details.days} nights
           </Typography>
           <Typography variant="body1">
             ${details.costPerNight * details.days}
@@ -146,7 +155,7 @@ const PriceDetails = (props: detailsProps) => {
         </div>
         <div className={classes.details}>
           <Typography variant="body1" className={classes.priceDetailsField}>
-            Airbnb service fee
+            Service fee
           </Typography>
           <Typography variant="body1">${details.serviceFee}</Typography>
         </div>

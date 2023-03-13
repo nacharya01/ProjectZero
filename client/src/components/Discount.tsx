@@ -5,9 +5,7 @@ import { Timer as TimerIcon, FlashOn as FlashOnIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   card: {
-    marginLeft: "1rem",
     marginTop: "1rem",
-    maxWidth: 770,
   },
   hurryUpIcon: {
     marginRight: 5,
