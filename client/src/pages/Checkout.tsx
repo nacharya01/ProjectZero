@@ -1,10 +1,9 @@
-import PriceDetails from "../components/PriceDetails.tsx";
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import { Divider, Box, Typography, Grid } from "@material-ui/core";
+import { CssBaseline, Container } from "@mui/material";
+import PriceDetails from "../components/PriceDetails.tsx";
 import Payment from "../components/Payment.tsx";
 import DiscountCard from "../components/Discount.tsx";
-import { Divider } from "@material-ui/core";
-import PaymentOption from "../components/PaymentOptions.tsx";
 import checkout from "../assets/data/checkout";
 
 export default function Checkout() {
@@ -13,35 +12,40 @@ export default function Checkout() {
   };
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={7}>
-          <Grid container direction="column" spacing={4}>
-            <Grid item>
-              <DiscountCard
-                discount={{
-                  ...checkout.discount,
-                  onBookNowClick: onBookNowClick,
-                }}
-              />
-            </Grid>
-            <Grid item>
-              <Divider />
-            </Grid>
-            <Grid item>
-              <Payment />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} sm={5}>
-          <PriceDetails details={checkout.priceDetails} />
-        </Grid>
-        <Grid item xs={12} sm={12}>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Box style={{ marginTop: "5em", marginBottom: "1em" }}>
+          <Typography variant="h4" component="h3">
+            Confirm and pay
+          </Typography>
+        </Box>
+        <Grid item>
           <Divider />
         </Grid>
-        <Grid item xs={12} sm={12}>
-          <PaymentOption options={checkout.paymentOptions} />
+        <Grid container spacing={8}>
+          <Grid item sm={12} md={7}>
+            <Grid container direction="column" spacing={4}>
+              <Grid item>
+                <DiscountCard
+                  discount={{
+                    ...checkout.discount,
+                    onBookNowClick: onBookNowClick,
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <Divider />
+              </Grid>
+              <Grid item>
+                <Payment />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item sm={12} md={5}>
+            <PriceDetails details={checkout.priceDetails} />
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </div>
   );
 }
